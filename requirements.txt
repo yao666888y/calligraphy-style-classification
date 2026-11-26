@@ -1,0 +1,33 @@
+# ============================================================================
+# 中国历代书法名家分类 —— CNNN 环境补充依赖
+# ----------------------------------------------------------------------------
+# 环境: D:\anaconda3\envs\CNNN  (Python 3.10.20)
+# 用法: conda activate CNNN
+#       python -m pip install -r requirements.txt
+#
+# 【不要】把 torch / torchvision 写进来：
+#   已装 torch 2.11.0+cu130 / torchvision 0.26.0+cu130，
+#   一旦这里出现 torch，pip 可能把 cu130 构建替换成 CPU 版（需重下 2GB+）。
+# 【不要】加 --upgrade：会顺带升级 numpy / pillow 等已装包。
+# ============================================================================
+
+# ---------- 核心（训练/评估必需） ----------
+timm==1.0.31
+scikit-learn==1.7.2
+pandas==2.3.3
+tqdm==4.70.1
+openpyxl==3.1.5
+
+# Grad-CAM 的可视化库。注意：PyPI 上 pytorch-grad-cam 已改名，正确包名是 grad-cam，
+# 导入名仍是 pytorch_grad_cam。
+grad-cam==1.5.7
+
+# 只装 headless 版：import cv2 完全一样，仅无 GUI 窗口（本项目禁用 imread/imwrite，不需要 GUI）。
+# 千万不要再装 opencv-python：两者共用同一个 cv2/ 目录，后装的会把先装的覆盖掉。
+# 也不要升到 5.x（2026 年刚发布，grad-cam 的 applyColorMap 未验证）。
+opencv-python-headless==4.12.0.88
+
+# ---------- Demo 界面（可选，体量大：会拉 fastapi/uvicorn/pydantic 等约 30 个包） ----------
+# 核心依赖跑通后再单独执行:
+#   python -m pip install "gradio==6.32.0"
+# gradio==6.32.0

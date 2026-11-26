@@ -1,0 +1,22 @@
+# ---- 数据与权重（体积太大，不入库）----
+data/
+checkpoints/
+*.pth
+*.pt
+
+# ---- 运行产物 ----
+outputs/
+*.log
+
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# ---- IDE / 系统 ----
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
